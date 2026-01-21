@@ -71,6 +71,7 @@
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     * {
       margin: 0;
@@ -370,6 +371,66 @@
       transform: scale(1.05);
     }
 
+    /* Loading State */
+    .loading-state {
+      text-align: center;
+      padding: 80px 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+
+    .loading-state i {
+      font-size: 48px;
+      color: #0d5c2f;
+      margin-bottom: 20px;
+    }
+
+    .loading-state p {
+      color: #666;
+      font-size: 18px;
+    }
+
+    /* Error State */
+    .error-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 12px;
+    }
+
+    .error-state i {
+      font-size: 48px;
+      color: #e53e3e;
+      margin-bottom: 20px;
+    }
+
+    .error-state h3 {
+      font-size: 22px;
+      color: #c53030;
+      margin-bottom: 10px;
+    }
+
+    .error-state p {
+      color: #742a2a;
+      margin-bottom: 20px;
+    }
+
+    .retry-btn {
+      background: #0d5c2f;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .retry-btn:hover {
+      background: #094a25;
+    }
+
     /* CTA */
     .cta {
       background: #0d5c2f;
@@ -613,166 +674,20 @@
 
   <!-- Projects -->
   <section class="section">
-    <div class="section-container">
-      <!-- Project 1: Scholarship Program -->
-      <div class="project">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0015.jpg" alt="Scholarship Program">
-        </div>
-        <div class="project-content">
-          <p class="project-number">01</p>
-          <h2 class="project-title">Scholarship Program</h2>
-          <p class="project-text">Our scholarship program supports meritorious students from underprivileged families, enabling them to continue their education. We provide study materials and academic guidance to help students achieve their dreams.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">3000+</div>
-              <div class="project-stat-label">Students Supported</div>
-            </div>
-          </div>
-        </div>
+    <div class="section-container" id="projectsContainer">
+      <!-- Loading State -->
+      <div id="projectsLoading" class="loading-state">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading projects...</p>
       </div>
-
-      <!-- Project 2: Pre-Primary Schools -->
-      <div class="project reverse">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0019.jpg" alt="Pre-Primary Schools">
-        </div>
-        <div class="project-content">
-          <p class="project-number">02</p>
-          <h2 class="project-title">Pre-Primary Schools</h2>
-          <p class="project-text">We run pre-primary schools in remote char areas where children have no access to early education. These schools provide foundational learning, preparing young children for formal education and giving them a strong start in life.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">2</div>
-              <div class="project-stat-label">Schools Running</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Char Areas</div>
-              <div class="project-stat-label">Target Region</div>
-            </div>
-          </div>
-        </div>
+      <!-- Error State -->
+      <div id="projectsError" class="error-state" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <h3>Failed to Load Projects</h3>
+        <p>Please check your internet connection and try again.</p>
+        <button class="retry-btn" onclick="loadProjects()">Retry</button>
       </div>
-
-      <!-- Project 3: Safe Drinking Water -->
-      <div class="project">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0005.jpg" alt="Safe Drinking Water">
-        </div>
-        <div class="project-content">
-          <p class="project-number">03</p>
-          <h2 class="project-title">Safe Drinking Water</h2>
-          <p class="project-text">Access to clean drinking water is a basic necessity. We install tube wells and water purification systems in communities, schools, and institutions to ensure families have access to safe, arsenic-free drinking water.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">410+</div>
-              <div class="project-stat-label">Families Served</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Arsenic-Free</div>
-              <div class="project-stat-label">Water Quality</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4: Winter Clothes Distribution -->
-      <div class="project reverse">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0012.jpg" alt="Winter Clothes Distribution">
-        </div>
-        <div class="project-content">
-          <p class="project-number">04</p>
-          <h2 class="project-title">Winter Clothes Distribution</h2>
-          <p class="project-text">Every winter, we distribute blankets and warm clothing to vulnerable families in remote areas. The harsh winter months can be life-threatening for the poor without adequate protection from the cold.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">3500+</div>
-              <div class="project-stat-label">Blankets Distributed</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Annual</div>
-              <div class="project-stat-label">Campaign</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5: Emergency Relief Work -->
-      <div class="project">
-        <div class="project-image">
-          <img src="assets/123.jpg" alt="Emergency Relief Work">
-        </div>
-        <div class="project-content">
-          <p class="project-number">05</p>
-          <h2 class="project-title">Emergency Relief Work</h2>
-          <p class="project-text">During floods, natural disasters, and emergencies, we provide immediate relief to affected communities. Our relief packages include food, clean water, medicine, and essential supplies to help families survive difficult times. Our organization conducts activities such as cash payment for medical treatment, construction of houses for people suddenly made homeless due to cyclone and fire accidents as part of the immediate relief program.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">Flood Relief</div>
-              <div class="project-stat-label">Primary Focus</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Immediate</div>
-              <div class="project-stat-label">Response Time</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 6: Sanitation & Hygiene -->
-      <div class="project reverse">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0024.jpg" alt="Sanitation & Hygiene">
-        </div>
-        <div class="project-content">
-          <p class="project-number">06</p>
-          <h2 class="project-title">Sanitation & Hygiene</h2>
-          <p class="project-text">We build sanitary latrines and promote hygiene awareness in communities where open defecation is common. Proper sanitation prevents disease and improves overall community health.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">100+</div>
-              <div class="project-stat-label">Latrines Built</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Community</div>
-              <div class="project-stat-label">Health Focus</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 7: Income Generating Activities -->
-      <div class="project">
-        <div class="project-image">
-          <img src="assets/IMG-20250605-WA0008.jpg" alt="Income Generating Activities">
-        </div>
-        <div class="project-content">
-          <p class="project-number">07</p>
-          <h2 class="project-title">Income Generating Activities</h2>
-          <p class="project-text">We provide microfinance support and training for income-generating activities, empowering families to become self-reliant. From small businesses to agricultural projects, we help create sustainable livelihoods.</p>
-          <div class="project-stats">
-            <div class="project-stat">
-              <div class="project-stat-number">MRA Approved</div>
-              <div class="project-stat-label">Microfinance License</div>
-            </div>
-            <div class="project-stat">
-              <div class="project-stat-number">Sustainable</div>
-              <div class="project-stat-label">Development</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Other Activities Section -->
-      <div class="other-activities">
-        <p class="project-number">08</p>
-        <h2 class="project-title">Other Activities</h2>
-        <p class="project-text">CHAYA organization donates on various activities to support the community.</p>
-        <ul class="activities-list">
-          <li>Chaya organization distributes cow and goat meat to 115 poor people during Eid-ul-Adha</li>
-        </ul>
-      </div>
+      <!-- Projects will be rendered here dynamically -->
     </div>
   </section>
 
@@ -783,55 +698,13 @@
       <h2 class="section-title">Our Work in Action</h2>
       <p class="section-desc">A glimpse into our community outreach and development programs.</p>
 
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0001.jpg" alt="Activity">
+      <div class="gallery-grid" id="galleryContainer">
+        <!-- Loading State -->
+        <div id="galleryLoading" class="loading-state" style="grid-column: 1 / -1;">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Loading gallery...</p>
         </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0003.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0005.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0007.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0010.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0015.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0018.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/IMG-20250605-WA0025.jpg" alt="Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.04%20PM.jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/all.jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.05%20PM.jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.05%20PM%20(1).jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.06%20PM.jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.06%20PM%20(1).jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.07%20PM.jpeg" alt="Community Activity">
-        </div>
-        <div class="gallery-item">
-          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.08%20PM.jpeg" alt="Community Activity">
-        </div>
+        <!-- Gallery images will be rendered here dynamically -->
       </div>
     </div>
   </section>
@@ -881,16 +754,268 @@
   </footer>
 
   <script>
-    // Toggle mobile menu
+    // ============================================================
+    // CONFIGURATION - CHANGE THESE URLs TO YOUR GOOGLE SHEET CSV URLs
+    // ============================================================
+    // Projects Sheet: Columns should be: image_url, title, description, stat1_number, stat1_label, stat2_number, stat2_label
+    const PROJECTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTj3bzbegZdbzmubbfDeMCto3nZlhAQ22VxxXBW-R_smjzMJmGW5boxUIHFOtvNSGSTrbPlHvmZenmM/pub?gid=0&single=true&output=csv';
+    
+    // Gallery Sheet: Columns should be: image_url, alt_text
+    const GALLERY_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSsej5NlWwDGnl9IhbxYfNxDUUgH-1BZxefb9sbyIih7z-HrlCrWYqHw1v4PeBNU2niG2Z5AjAEI_u7/pub?gid=0&single=true&output=csv';
+    // ============================================================
+
+    /**
+     * Mobile menu toggle function
+     */
     function toggleMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
     }
 
-    // Close mobile menu when clicking links
     document.querySelectorAll('.mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('mobileMenu').classList.remove('active');
       });
+    });
+
+    // ============================================================
+    // CSV PARSER - Handles quoted fields and commas inside values
+    // ============================================================
+    
+    /**
+     * Parse CSV text into array of objects
+     * @param {string} csvText - Raw CSV text
+     * @returns {Array<Object>} - Array of row objects with headers as keys
+     */
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let currentField = '';
+      let insideQuotes = false;
+      
+      csvText = csvText.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+        
+        if (insideQuotes) {
+          if (char === '"') {
+            if (nextChar === '"') {
+              currentField += '"';
+              i++;
+            } else {
+              insideQuotes = false;
+            }
+          } else {
+            currentField += char;
+          }
+        } else {
+          if (char === '"') {
+            insideQuotes = true;
+          } else if (char === ',') {
+            currentRow.push(currentField.trim());
+            currentField = '';
+          } else if (char === '\n') {
+            currentRow.push(currentField.trim());
+            if (currentRow.length > 0 && currentRow.some(f => f !== '')) {
+              rows.push(currentRow);
+            }
+            currentRow = [];
+            currentField = '';
+          } else {
+            currentField += char;
+          }
+        }
+      }
+      
+      if (currentField || currentRow.length > 0) {
+        currentRow.push(currentField.trim());
+        if (currentRow.some(f => f !== '')) {
+          rows.push(currentRow);
+        }
+      }
+      
+      if (rows.length < 2) return [];
+      
+      const headers = rows[0];
+      const data = [];
+      
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const obj = {};
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = row[j] || '';
+        }
+        data.push(obj);
+      }
+      
+      return data;
+    }
+
+    /**
+     * Escape HTML special characters
+     */
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ============================================================
+    // PROJECTS RENDERING
+    // ============================================================
+    
+    /**
+     * Render a single project card
+     */
+    function renderProject(project, index) {
+      const projectNumber = String(index + 1).padStart(2, '0');
+      const reverseClass = index % 2 === 1 ? 'reverse' : '';
+      
+      // Build stats HTML
+      let statsHtml = '';
+      if (project.stat1_number) {
+        statsHtml += `
+          <div class="project-stat">
+            <div class="project-stat-number">${escapeHtml(project.stat1_number)}</div>
+            <div class="project-stat-label">${escapeHtml(project.stat1_label)}</div>
+          </div>
+        `;
+      }
+      if (project.stat2_number) {
+        statsHtml += `
+          <div class="project-stat">
+            <div class="project-stat-number">${escapeHtml(project.stat2_number)}</div>
+            <div class="project-stat-label">${escapeHtml(project.stat2_label)}</div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="project ${reverseClass}">
+          <div class="project-image">
+            <img src="${escapeHtml(project.image_url)}" alt="${escapeHtml(project.title)}" loading="lazy">
+          </div>
+          <div class="project-content">
+            <p class="project-number">${projectNumber}</p>
+            <h2 class="project-title">${escapeHtml(project.title)}</h2>
+            <p class="project-text">${escapeHtml(project.description)}</p>
+            ${statsHtml ? `<div class="project-stats">${statsHtml}</div>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * Load and render projects from Google Sheet
+     */
+    async function loadProjects() {
+      const container = document.getElementById('projectsContainer');
+      const loadingState = document.getElementById('projectsLoading');
+      const errorState = document.getElementById('projectsError');
+
+      loadingState.style.display = 'block';
+      errorState.style.display = 'none';
+
+      // Remove previously rendered projects
+      const existingProjects = container.querySelectorAll('.project');
+      existingProjects.forEach(p => p.remove());
+
+      try {
+        if (PROJECTS_CSV_URL === 'YOUR_PROJECTS_SHEET_CSV_URL_HERE' || !PROJECTS_CSV_URL) {
+          throw new Error('Projects Sheet URL not configured');
+        }
+
+        const cacheBuster = '&_t=' + Date.now();
+        const response = await fetch(PROJECTS_CSV_URL + cacheBuster, {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        
+        if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+        const csvText = await response.text();
+        const allProjects = parseCSV(csvText);
+
+        loadingState.style.display = 'none';
+
+        if (allProjects.length === 0) {
+          container.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">No projects available at the moment.</p>';
+        } else {
+          allProjects.forEach((project, index) => {
+            container.insertAdjacentHTML('beforeend', renderProject(project, index));
+          });
+        }
+
+      } catch (error) {
+        console.error('Error loading projects:', error);
+        loadingState.style.display = 'none';
+        errorState.style.display = 'block';
+      }
+    }
+
+    // ============================================================
+    // GALLERY RENDERING
+    // ============================================================
+    
+    /**
+     * Render a single gallery item
+     */
+    function renderGalleryItem(item) {
+      return `
+        <div class="gallery-item">
+          <img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.alt_text || 'Activity')}" loading="lazy">
+        </div>
+      `;
+    }
+
+    /**
+     * Load and render gallery from Google Sheet
+     */
+    async function loadGallery() {
+      const container = document.getElementById('galleryContainer');
+      const loadingState = document.getElementById('galleryLoading');
+
+      try {
+        if (GALLERY_CSV_URL === 'YOUR_GALLERY_SHEET_CSV_URL_HERE' || !GALLERY_CSV_URL) {
+          throw new Error('Gallery Sheet URL not configured');
+        }
+
+        const cacheBuster = '&_t=' + Date.now();
+        const response = await fetch(GALLERY_CSV_URL + cacheBuster, {
+          cache: 'no-store',
+          headers: { 'Cache-Control': 'no-cache' }
+        });
+        
+        if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+        const csvText = await response.text();
+        const allImages = parseCSV(csvText);
+
+        loadingState.style.display = 'none';
+
+        if (allImages.length === 0) {
+          container.innerHTML = '<p style="text-align: center; color: #666; padding: 40px; grid-column: 1 / -1;">No gallery images available.</p>';
+        } else {
+          allImages.forEach(image => {
+            container.insertAdjacentHTML('beforeend', renderGalleryItem(image));
+          });
+        }
+
+      } catch (error) {
+        console.error('Error loading gallery:', error);
+        loadingState.style.display = 'none';
+        container.innerHTML = '<p style="text-align: center; color: #e53e3e; padding: 40px; grid-column: 1 / -1;">Failed to load gallery images.</p>';
+      }
+    }
+
+    // ============================================================
+    // INITIALIZE ON PAGE LOAD
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProjects();
+      loadGallery();
     });
   </script>
 </body>
