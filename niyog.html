@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="নিয়োগ বিজ্ঞপ্তি - ছায়া">
+  <meta property="og:description" content="ছায়া এনজিওতে চাকরির সুযোগ - এখনই আবেদন করুন।">
+  <meta property="og:image" content="https://raw.githubusercontent.com/zayanzakir2211/chaya/main/assets/logo.png">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <title>নিয়োগ বিজ্ঞপ্তি - ছায়া</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Bengali', 'Inter', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.8;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      height: 45px;
+    }
+
+    .nav-logo span {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0d5c2f;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0d5c2f;
+    }
+
+    .nav-links a.active {
+      color: #0d5c2f;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* Page Header */
+    .page-header {
+      margin-top: 70px;
+      position: relative;
+      height: 45vh;
+      min-height: 350px;
+      overflow: hidden;
+    }
+
+    .page-header img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page-header-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgb(13, 92, 47);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .page-header h1 {
+      color: #fff;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      color: rgba(255,255,255,0.9);
+      font-size: 18px;
+      max-width: 600px;
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* No Jobs Message */
+    .no-jobs {
+      text-align: center;
+      padding: 60px 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+
+    .no-jobs i {
+      font-size: 48px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .no-jobs h3 {
+      font-size: 24px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .no-jobs p {
+      color: #888;
+    }
+
+    /* Job Card */
+    .job-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .job-header {
+      background: #0d5c2f;
+      color: #fff;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .job-header h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .job-header p {
+      opacity: 0.9;
+      font-size: 16px;
+    }
+
+    .job-body {
+      padding: 40px;
+    }
+
+    .job-section {
+      margin-bottom: 30px;
+    }
+
+    .job-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-section h3 {
+      font-size: 20px;
+      color: #0d5c2f;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e8f5e9;
+    }
+
+    .job-section p,
+    .job-section li {
+      font-size: 16px;
+      color: #444;
+      line-height: 1.9;
+    }
+
+    .job-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .job-section li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+    }
+
+    .job-section li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0d5c2f;
+      font-weight: 600;
+    }
+
+    .job-info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .job-info-item {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .job-info-label {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .job-info-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .salary-box {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      line-height: 1.9;
+    }
+
+    .salary-box strong {
+      color: #1a1a1a;
+    }
+
+    .salary-highlight {
+      color: #0d5c2f;
+      font-weight: 600;
+    }
+
+    .submission-box {
+      background: #e8f5e9;
+      padding: 20px;
+      border-radius: 8px;
+      line-height: 1.9;
+    }
+
+    /* Notice Box */
+    .notice-box {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      border-radius: 8px;
+      padding: 24px;
+      margin-top: 30px;
+    }
+
+    .notice-box h4 {
+      color: #856404;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .notice-box h4 i {
+      margin-right: 8px;
+    }
+
+    .notice-box p {
+      color: #856404;
+      font-size: 15px;
+    }
+
+    /* Loading State */
+    .loading-state {
+      text-align: center;
+      padding: 80px 20px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+
+    .loading-state i {
+      font-size: 48px;
+      color: #0d5c2f;
+      margin-bottom: 20px;
+    }
+
+    .loading-state p {
+      color: #666;
+      font-size: 18px;
+    }
+
+    /* Error State */
+    .error-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 12px;
+    }
+
+    .error-state i {
+      font-size: 48px;
+      color: #e53e3e;
+      margin-bottom: 20px;
+    }
+
+    .error-state h3 {
+      font-size: 22px;
+      color: #c53030;
+      margin-bottom: 10px;
+    }
+
+    .error-state p {
+      color: #742a2a;
+      margin-bottom: 20px;
+    }
+
+    .retry-btn {
+      background: #0d5c2f;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-family: 'Noto Sans Bengali', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .retry-btn:hover {
+      background: #094a25;
+    }
+
+    /* Expired Badge */
+    .expired-badge {
+      display: inline-block;
+      background: #e53e3e;
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-left: 10px;
+    }
+
+    .job-card.expired {
+      opacity: 0.7;
+    }
+
+    .job-card.expired .job-header {
+      background: #718096;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: #f8f9fa;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .contact-item {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .contact-icon {
+      font-size: 32px;
+      color: #0d5c2f;
+      margin-bottom: 12px;
+    }
+
+    .contact-item h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .contact-item p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    .contact-item a {
+      color: #0d5c2f;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #999;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      color: #666;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      z-index: 999;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .job-body {
+        padding: 24px;
+      }
+
+      .job-info-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Chaya">
+        <span>CHAYA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#funds">Funds</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#branches">Branches</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="niyog.html" class="active">Job Circular</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+      <button class="menu-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#funds">Funds</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#branches">Branches</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="niyog.html">Job Circular</a>
+    <a href="donate.html">Donate</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <img src="assets/IMG-20250605-WA0016.jpg" alt="Job Circular">
+    <div class="page-header-overlay">
+      <h1>নিয়োগ বিজ্ঞপ্তি</h1>
+      <p>ছায়া পরিবারে যোগ দিন এবং সমাজ পরিবর্তনে অবদান রাখুন</p>
+    </div>
+  </header>
+
+  <!-- Job Circulars - Dynamic Content from Google Sheets -->
+  <section class="section">
+    <div class="section-container" id="jobContainer">
+      <!-- Loading State -->
+      <div class="loading-state" id="loadingState">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>বিজ্ঞপ্তি লোড হচ্ছে...</p>
+      </div>
+      
+      <!-- Error State (hidden by default) -->
+      <div class="error-state" id="errorState" style="display: none;">
+        <i class="fas fa-exclamation-circle"></i>
+        <h3>দুঃখিত, তথ্য লোড করতে সমস্যা হয়েছে</h3>
+        <p>অনুগ্রহ করে পরে আবার চেষ্টা করুন অথবা সরাসরি যোগাযোগ করুন।</p>
+        <button onclick="loadJobCirculars()" class="retry-btn">আবার চেষ্টা করুন</button>
+      </div>
+      
+      <!-- Job cards will be rendered here dynamically -->
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact-section">
+    <div class="section-container">
+      <h2 style="text-align: center; margin-bottom: 30px; font-size: 28px;">যোগাযোগ</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <h4>ফোন</h4>
+          <p><a href="tel:+8801737772999">+৮৮০ ১৭৩৭-৭৭২৯৯৯</a></p>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <h4>ইমেইল</h4>
+          <p><a href="mailto:ngochaya4@gmail.com">ngochaya4@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="contact-item" style="margin-top: 20px; text-align: center;">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <h4>অফিসের ঠিকানা</h4>
+        <p>কর্তিমারী, যাদুরচর, রৌমারী, কুড়িগ্রাম</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Chaya">
+          <p>Center for Helping to Activate Youth and Adult - A non-political, voluntary social welfare organization dedicated to community development since 2015.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="index.html#branches">Branches</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Programs</h4>
+          <ul class="footer-links">
+            <li><a href="projects.html">Scholarships</a></li>
+            <li><a href="projects.html">Safe Water</a></li>
+            <li><a href="projects.html">Relief Work</a></li>
+            <li><a href="niyog.html">Job Circular</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Chaya. All rights reserved.</p>
+        <p>Developed by Zayan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================================
+    // CONFIGURATION - CHANGE THIS URL TO YOUR GOOGLE SHEET CSV URL
+    // ============================================================
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRajq9piYT_Q7Owy_22zhxCxuP2Vsp667gyWS4CEIWH-JjE2fNjPzLO5rjBF1sNAJrMPMLZ9ogo8e0R/pub?gid=0&single=true&output=csv';
+    // Example: 'https://docs.google.com/spreadsheets/d/e/YOUR_SPREADSHEET_ID/pub?output=csv'
+    // ============================================================
+
+    /**
+     * Mobile menu toggle function
+     */
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('active');
+      });
+    });
+
+    // ============================================================
+    // CSV PARSER - Handles quoted fields and commas inside values
+    // ============================================================
+    
+    /**
+     * Parse CSV text into array of objects
+     * Handles: quoted fields, commas inside quotes, newlines, UTF-8 Bangla text
+     * @param {string} csvText - Raw CSV text
+     * @returns {Array<Object>} - Array of row objects with headers as keys
+     */
+    function parseCSV(csvText) {
+      const rows = [];
+      let currentRow = [];
+      let currentField = '';
+      let insideQuotes = false;
+      
+      // Normalize line endings
+      csvText = csvText.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      
+      for (let i = 0; i < csvText.length; i++) {
+        const char = csvText[i];
+        const nextChar = csvText[i + 1];
+        
+        if (insideQuotes) {
+          // Inside quoted field
+          if (char === '"') {
+            if (nextChar === '"') {
+              // Escaped quote ("") -> add single quote
+              currentField += '"';
+              i++; // Skip next quote
+            } else {
+              // End of quoted field
+              insideQuotes = false;
+            }
+          } else {
+            currentField += char;
+          }
+        } else {
+          // Outside quoted field
+          if (char === '"') {
+            // Start of quoted field
+            insideQuotes = true;
+          } else if (char === ',') {
+            // Field separator
+            currentRow.push(currentField.trim());
+            currentField = '';
+          } else if (char === '\n') {
+            // Row separator
+            currentRow.push(currentField.trim());
+            if (currentRow.length > 0 && currentRow.some(f => f !== '')) {
+              rows.push(currentRow);
+            }
+            currentRow = [];
+            currentField = '';
+          } else {
+            currentField += char;
+          }
+        }
+      }
+      
+      // Handle last field and row
+      if (currentField || currentRow.length > 0) {
+        currentRow.push(currentField.trim());
+        if (currentRow.some(f => f !== '')) {
+          rows.push(currentRow);
+        }
+      }
+      
+      // Convert to array of objects using first row as headers
+      if (rows.length < 2) return [];
+      
+      const headers = rows[0];
+      const data = [];
+      
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const obj = {};
+        for (let j = 0; j < headers.length; j++) {
+          obj[headers[j]] = row[j] || '';
+        }
+        data.push(obj);
+      }
+      
+      return data;
+    }
+
+    // ============================================================
+    // DATE UTILITIES
+    // ============================================================
+    
+    /**
+     * Parse date string in DD-MM-YYYY format to Date object
+     * @param {string} dateStr - Date string like "20-08-2025"
+     * @returns {Date|null} - Date object or null if invalid
+     */
+    function parseDate(dateStr) {
+      if (!dateStr) return null;
+      const parts = dateStr.split('-');
+      if (parts.length !== 3) return null;
+      const day = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1; // Months are 0-indexed
+      const year = parseInt(parts[2], 10);
+      if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
+      return new Date(year, month, day);
+    }
+
+    /**
+     * Check if a deadline date has passed
+     * @param {string} deadlineStr - Deadline date string in DD-MM-YYYY format
+     * @returns {boolean} - True if expired
+     */
+    function isExpired(deadlineStr) {
+      const deadline = parseDate(deadlineStr);
+      if (!deadline) return false;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return deadline < today;
+    }
+
+    // ============================================================
+    // HTML RENDERING
+    // ============================================================
+    
+    /**
+     * Convert newline-separated text to HTML list items
+     * @param {string} text - Text with items separated by newlines
+     * @returns {string} - HTML list items
+     */
+    function textToListItems(text) {
+      if (!text) return '';
+      return text.split('\n')
+        .map(item => item.trim())
+        .filter(item => item !== '')
+        .map(item => `<li>${escapeHtml(item)}</li>`)
+        .join('');
+    }
+
+    /**
+     * Convert newline-separated text to HTML with <br> tags
+     * @param {string} text - Text with newlines
+     * @returns {string} - HTML with line breaks
+     */
+    function textToHtmlBreaks(text) {
+      if (!text) return '';
+      return escapeHtml(text).replace(/\n/g, '<br>');
+    }
+
+    /**
+     * Escape HTML special characters to prevent XSS
+     * @param {string} text - Raw text
+     * @returns {string} - Escaped text
+     */
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    /**
+     * Render a single job card HTML
+     * @param {Object} job - Job data object from parsed CSV
+     * @returns {string} - HTML string for job card
+     */
+    function renderJobCard(job) {
+      const expired = isExpired(job.deadline_date);
+      const expiredClass = expired ? 'expired' : '';
+      const expiredBadge = expired ? '<span class="expired-badge">মেয়াদ উত্তীর্ণ</span>' : '';
+
+      return `
+        <div class="job-card ${expiredClass}">
+          <div class="job-header">
+            <h2>${escapeHtml(job.job_title)}${expiredBadge}</h2>
+            <p>তারিখ: ${escapeHtml(job.publish_date)}</p>
+          </div>
+
+          <div class="job-body">
+            <!-- About Organization -->
+            <div class="job-section">
+              <h3>সংস্থা সম্পর্কে</h3>
+              <p>${escapeHtml(job.about_organization)}</p>
+            </div>
+
+            <!-- Job Info -->
+            <div class="job-section">
+              <h3>পদের বিবরণ</h3>
+              <div class="job-info-grid">
+                <div class="job-info-item">
+                  <p class="job-info-label">পদের নাম</p>
+                  <p class="job-info-value">${escapeHtml(job.position_name)}</p>
+                </div>
+                <div class="job-info-item">
+                  <p class="job-info-label">পদের সংখ্যা</p>
+                  <p class="job-info-value">${escapeHtml(job.vacancy_count)}</p>
+                </div>
+                <div class="job-info-item">
+                  <p class="job-info-label">কর্মস্থল</p>
+                  <p class="job-info-value">${escapeHtml(job.work_location)}</p>
+                </div>
+                <div class="job-info-item">
+                  <p class="job-info-label">আবেদনের শেষ তারিখ</p>
+                  <p class="job-info-value">${escapeHtml(job.deadline_display)}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Requirements -->
+            <div class="job-section">
+              <h3>শিক্ষাগত যোগ্যতা ও বয়স</h3>
+              <ul>
+                ${textToListItems(job.requirements)}
+              </ul>
+            </div>
+
+            <!-- Salary -->
+            <div class="job-section">
+              <h3>বেতন ভাতা</h3>
+              <div class="salary-box">
+                ${textToHtmlBreaks(job.salary_details)}
+              </div>
+            </div>
+
+            <!-- How to Apply -->
+            <div class="job-section">
+              <h3>আবেদন প্রক্রিয়া</h3>
+              <p style="margin-bottom: 20px;">${escapeHtml(job.application_intro)}</p>
+              <ul>
+                ${textToListItems(job.required_documents)}
+              </ul>
+            </div>
+
+            <!-- Submission Details -->
+            <div class="job-section">
+              <h3>আবেদন জমা</h3>
+              <div class="submission-box">
+                ${textToHtmlBreaks(job.submission_details)}
+              </div>
+            </div>
+
+            <!-- Notice -->
+            ${job.notice_text ? `
+            <div class="notice-box">
+              <h4><i class="fas fa-exclamation-triangle"></i> গুরুত্বপূর্ণ নোটিশ</h4>
+              <p>${escapeHtml(job.notice_text)}</p>
+            </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * Render "No jobs available" message
+     * @returns {string} - HTML for no jobs state
+     */
+    function renderNoJobs() {
+      return `
+        <div class="no-jobs">
+          <i class="fas fa-briefcase"></i>
+          <h3>বর্তমানে কোন নিয়োগ বিজ্ঞপ্তি নেই</h3>
+          <p>নতুন বিজ্ঞপ্তি প্রকাশিত হলে এখানে দেখানো হবে। পরে আবার চেক করুন।</p>
+        </div>
+      `;
+    }
+
+    // ============================================================
+    // MAIN FUNCTION - LOAD AND DISPLAY JOB CIRCULARS
+    // ============================================================
+    
+    /**
+     * Fetch job circulars from Google Sheet CSV and render them
+     */
+    async function loadJobCirculars() {
+      const container = document.getElementById('jobContainer');
+      const loadingState = document.getElementById('loadingState');
+      const errorState = document.getElementById('errorState');
+
+      // Show loading, hide error
+      loadingState.style.display = 'block';
+      errorState.style.display = 'none';
+
+      // Remove any previously rendered job cards
+      const existingCards = container.querySelectorAll('.job-card, .no-jobs');
+      existingCards.forEach(card => card.remove());
+
+      try {
+        // Check if URL is configured
+        if (SHEET_CSV_URL === 'YOUR_GOOGLE_SHEET_CSV_URL_HERE' || !SHEET_CSV_URL) {
+          throw new Error('Google Sheet URL not configured');
+        }
+
+        // Add cache-busting timestamp to force fresh data on every refresh
+        const cacheBuster = '&_t=' + Date.now();
+        const fetchUrl = SHEET_CSV_URL + cacheBuster;
+
+        // Fetch CSV data with no-cache headers
+        const response = await fetch(fetchUrl, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        const csvText = await response.text();
+        
+        // Parse CSV to array of objects
+        const allJobs = parseCSV(csvText);
+
+        // Filter: only show rows where status = "published"
+        const publishedJobs = allJobs.filter(job => 
+          job.status && job.status.toLowerCase() === 'published'
+        );
+
+        // Hide loading state
+        loadingState.style.display = 'none';
+
+        // Render jobs or "no jobs" message
+        if (publishedJobs.length === 0) {
+          container.insertAdjacentHTML('beforeend', renderNoJobs());
+        } else {
+          // Render each job card (order preserved from sheet)
+          publishedJobs.forEach(job => {
+            container.insertAdjacentHTML('beforeend', renderJobCard(job));
+          });
+        }
+
+      } catch (error) {
+        console.error('Error loading job circulars:', error);
+        
+        // Hide loading, show error
+        loadingState.style.display = 'none';
+        errorState.style.display = 'block';
+      }
+    }
+
+    // ============================================================
+    // INITIALIZE ON PAGE LOAD
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', loadJobCirculars);
+  </script>
+</body>
+</html>

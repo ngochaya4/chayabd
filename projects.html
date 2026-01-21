@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Our Projects - Chaya">
+  <meta property="og:description" content="Discover the impactful projects by Chaya NGO - education, safe water, relief work and more.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/zayanzakir2211/chaya/main/assets/logo.png">
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <title>Projects - CHAYA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      height: 45px;
+    }
+
+    .nav-logo span {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0d5c2f;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: #333;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0d5c2f;
+    }
+
+    .nav-links a.active {
+      color: #0d5c2f;
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #333;
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* Page Header */
+    .page-header {
+      position: relative;
+      height: 400px;
+      margin-top: 70px;
+      overflow: hidden;
+    }
+
+    .page-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page-header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(13, 92, 47, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      padding: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      opacity: 0.95;
+    }
+
+    /* Section */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      color: #0d5c2f;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      color: #666;
+      max-width: 600px;
+      margin-bottom: 40px;
+    }
+
+    /* Project */
+    .project {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+      align-items: center;
+    }
+
+    .project.reverse .project-image {
+      order: 1;
+    }
+
+    .project-image {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px 0;
+    }
+
+    .project-number {
+      color: #0d5c2f;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .project-text {
+      color: #555;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 40px;
+    }
+
+    .project-stat {
+      border-left: 3px solid #0d5c2f;
+      padding-left: 16px;
+    }
+
+    .project-stat-number {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0d5c2f;
+    }
+
+    .project-stat-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Other Activities */
+    .other-activities {
+      padding: 80px 0;
+      border-top: 1px solid #eee;
+    }
+
+    .activities-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .activities-list li {
+      position: relative;
+      padding: 16px 20px 16px 50px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .activities-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 20px;
+      color: #0d5c2f;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    /* Gallery */
+    .gallery-section {
+      background: #f8f9fa;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* CTA */
+    .cta {
+      background: #0d5c2f;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .cta-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      color: #fff;
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.9);
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    .cta .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: #fff;
+      color: #0d5c2f;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .cta .btn:hover {
+      background: #f0f0f0;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand img {
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #999;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      z-index: 999;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      color: #333;
+      border-bottom: 1px solid #eee;
+    }
+
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .project {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .project.reverse .project-image {
+        order: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .project-stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="Chaya">
+        <span>CHAYA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#funds">Funds</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="index.html#branches">Branches</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="niyog.html">Job Circular</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+      <button class="menu-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#funds">Funds</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#branches">Branches</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="niyog.html">Job Circular</a>
+    <a href="donate.html">Donate</a>
+  </div>
+
+  <!-- Page Header -->
+  <header class="page-header">
+    <img src="assets/IMG-20250605-WA0017.jpg" alt="Our Projects">
+    <div class="page-header-overlay">
+      <h1>Our Projects</h1>
+      <p>Making a difference through education, healthcare, and community support</p>
+    </div>
+  </header>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="section-container">
+      <!-- Project 1: Scholarship Program -->
+      <div class="project">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0015.jpg" alt="Scholarship Program">
+        </div>
+        <div class="project-content">
+          <p class="project-number">01</p>
+          <h2 class="project-title">Scholarship Program</h2>
+          <p class="project-text">Our scholarship program supports meritorious students from underprivileged families, enabling them to continue their education. We provide study materials and academic guidance to help students achieve their dreams.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">3000+</div>
+              <div class="project-stat-label">Students Supported</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Pre-Primary Schools -->
+      <div class="project reverse">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0019.jpg" alt="Pre-Primary Schools">
+        </div>
+        <div class="project-content">
+          <p class="project-number">02</p>
+          <h2 class="project-title">Pre-Primary Schools</h2>
+          <p class="project-text">We run pre-primary schools in remote char areas where children have no access to early education. These schools provide foundational learning, preparing young children for formal education and giving them a strong start in life.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">2</div>
+              <div class="project-stat-label">Schools Running</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Char Areas</div>
+              <div class="project-stat-label">Target Region</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Safe Drinking Water -->
+      <div class="project">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0005.jpg" alt="Safe Drinking Water">
+        </div>
+        <div class="project-content">
+          <p class="project-number">03</p>
+          <h2 class="project-title">Safe Drinking Water</h2>
+          <p class="project-text">Access to clean drinking water is a basic necessity. We install tube wells and water purification systems in communities, schools, and institutions to ensure families have access to safe, arsenic-free drinking water.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">410+</div>
+              <div class="project-stat-label">Families Served</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Arsenic-Free</div>
+              <div class="project-stat-label">Water Quality</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Winter Clothes Distribution -->
+      <div class="project reverse">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0012.jpg" alt="Winter Clothes Distribution">
+        </div>
+        <div class="project-content">
+          <p class="project-number">04</p>
+          <h2 class="project-title">Winter Clothes Distribution</h2>
+          <p class="project-text">Every winter, we distribute blankets and warm clothing to vulnerable families in remote areas. The harsh winter months can be life-threatening for the poor without adequate protection from the cold.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">3500+</div>
+              <div class="project-stat-label">Blankets Distributed</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Annual</div>
+              <div class="project-stat-label">Campaign</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Emergency Relief Work -->
+      <div class="project">
+        <div class="project-image">
+          <img src="assets/123.jpg" alt="Emergency Relief Work">
+        </div>
+        <div class="project-content">
+          <p class="project-number">05</p>
+          <h2 class="project-title">Emergency Relief Work</h2>
+          <p class="project-text">During floods, natural disasters, and emergencies, we provide immediate relief to affected communities. Our relief packages include food, clean water, medicine, and essential supplies to help families survive difficult times. Our organization conducts activities such as cash payment for medical treatment, construction of houses for people suddenly made homeless due to cyclone and fire accidents as part of the immediate relief program.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">Flood Relief</div>
+              <div class="project-stat-label">Primary Focus</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Immediate</div>
+              <div class="project-stat-label">Response Time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Sanitation & Hygiene -->
+      <div class="project reverse">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0024.jpg" alt="Sanitation & Hygiene">
+        </div>
+        <div class="project-content">
+          <p class="project-number">06</p>
+          <h2 class="project-title">Sanitation & Hygiene</h2>
+          <p class="project-text">We build sanitary latrines and promote hygiene awareness in communities where open defecation is common. Proper sanitation prevents disease and improves overall community health.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">100+</div>
+              <div class="project-stat-label">Latrines Built</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Community</div>
+              <div class="project-stat-label">Health Focus</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 7: Income Generating Activities -->
+      <div class="project">
+        <div class="project-image">
+          <img src="assets/IMG-20250605-WA0008.jpg" alt="Income Generating Activities">
+        </div>
+        <div class="project-content">
+          <p class="project-number">07</p>
+          <h2 class="project-title">Income Generating Activities</h2>
+          <p class="project-text">We provide microfinance support and training for income-generating activities, empowering families to become self-reliant. From small businesses to agricultural projects, we help create sustainable livelihoods.</p>
+          <div class="project-stats">
+            <div class="project-stat">
+              <div class="project-stat-number">MRA Approved</div>
+              <div class="project-stat-label">Microfinance License</div>
+            </div>
+            <div class="project-stat">
+              <div class="project-stat-number">Sustainable</div>
+              <div class="project-stat-label">Development</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Activities Section -->
+      <div class="other-activities">
+        <p class="project-number">08</p>
+        <h2 class="project-title">Other Activities</h2>
+        <p class="project-text">CHAYA organization donates on various activities to support the community.</p>
+        <ul class="activities-list">
+          <li>Chaya organization distributes cow and goat meat to 115 poor people during Eid-ul-Adha</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section gallery-section">
+    <div class="section-container">
+      <p class="section-tag">Photo Gallery</p>
+      <h2 class="section-title">Our Work in Action</h2>
+      <p class="section-desc">A glimpse into our community outreach and development programs.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0001.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0003.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0005.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0007.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0010.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0015.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0018.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/IMG-20250605-WA0025.jpg" alt="Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.04%20PM.jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/all.jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.05%20PM.jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.05%20PM%20(1).jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.06%20PM.jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.06%20PM%20(1).jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.07%20PM.jpeg" alt="Community Activity">
+        </div>
+        <div class="gallery-item">
+          <img src="assets/WhatsApp%20Image%202026-01-19%20at%207.07.08%20PM.jpeg" alt="Community Activity">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-container">
+      <h2>Want to Support Our Mission?</h2>
+      <p>Your contribution can help us reach more communities and create lasting change.</p>
+      <a href="index.html#contact" class="btn">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/logo.png" alt="Chaya">
+          <p>Center for Helping to Activate Youth and Adult - A non-political, voluntary social welfare organization dedicated to community development since 2015.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="projects.html">Our Projects</a></li>
+            <li><a href="index.html#branches">Branches</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Programs</h4>
+          <ul class="footer-links">
+            <li><a href="projects.html">Scholarships</a></li>
+            <li><a href="projects.html">Safe Water</a></li>
+            <li><a href="projects.html">Relief Work</a></li>
+            <li><a href="niyog.html">Job Circular</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Chaya. All rights reserved.</p>
+        <p>Developed by Zayan</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking links
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
+
